@@ -1,0 +1,7 @@
+POST http://localhost:8080/v1/public/loginUser
+Content-Type: application/json
+
+{
+    "email": "admin@flumtree.com",
+    "password": "adminpassword"
+}

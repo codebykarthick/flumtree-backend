@@ -2,6 +2,7 @@ plugins {
 	id 'java'
 	id 'org.springframework.boot' version '3.3.3'
 	id 'io.spring.dependency-management' version '1.1.6'
+	id 'com.diffplug.spotless' version '6.25.0'
 }
 
 group = 'com.codebykarthick.sample'
@@ -12,6 +13,18 @@ java {
 		languageVersion = JavaLanguageVersion.of(17)
 	}
 }
+
+// My custom format for spotless
+spotless {
+	java {
+		googleJavaFormat("1.23.0")
+				.reflowLongStrings(true).formatJavadoc(true).reorderImports(true)
+				.groupArtifact('com.google.googlejavaformat:google-java-format')
+		indentWithSpaces(2)
+	}
+}
+
+build.dependsOn spotlessCheck
 
 configurations {
 	compileOnly {
@@ -30,8 +43,14 @@ dependencies {
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'
 
 	runtimeOnly 'com.h2database:h2'
+	runtimeOnly "io.jsonwebtoken:jjwt-impl:${jjwt_version}"
+	runtimeOnly "io.jsonwebtoken:jjwt-jackson:${jjwt_version}"
 
+	implementation "io.jsonwebtoken:jjwt-api:${jjwt_version}"
+	implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.6.0'
 	implementation 'org.springframework.boot:spring-boot-starter-actuator'
+	implementation 'org.springframework.boot:spring-boot-starter-aop'
+	implementation 'org.springframework.boot:spring-boot-starter-logging'
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 	implementation 'org.springframework.boot:spring-boot-starter-security'
 	implementation 'org.springframework.boot:spring-boot-starter-web'

@@ -1,0 +1,17 @@
+spring:
+  h2:
+    console:
+      enabled: true
+  datasource:
+    url: jdbc:h2:mem:mydb
+    username: sa
+    password: password
+    driverClassName: org.h2.Driver
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    # To delay the insertion of data until JPA has created the tables
+    defer-datasource-initialization: true
+  sql:
+    init:
+      # Tell Spring boot where to find the SQL files to seed the initial data from
+      data-locations: classpath:data/seed_*.sql
