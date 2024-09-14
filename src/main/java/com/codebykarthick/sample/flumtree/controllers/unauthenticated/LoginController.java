@@ -22,7 +22,7 @@ import org.springframework.web.bind.annotation.RestController;
 @SecurityRequirement(name = "")
 @RequestMapping("/v1/public")
 @RestController
-@Tag(name = "Login Controller", description = "APIs for logging in users")
+@Tag(name = "Login Controller", description = "API for logging in users")
 public class LoginController {
   @Autowired UserService userService;
 

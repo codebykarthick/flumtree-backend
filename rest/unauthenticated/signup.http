@@ -1,0 +1,13 @@
+POST http://localhost:8080/v1/public/signupUser
+Content-Type: application/json
+
+{
+  "email": "sri@gmail.com",
+  "password": "P@ssw0rd1",
+  "confirmPassword": "P@ssw0rd1",
+  "countryCode": "+91",
+  "phoneNumber": "9789048067",
+  "city": "Chennai",
+  "state": "Tamil Nadu",
+  "country": "India"
+}
